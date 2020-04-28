@@ -47,5 +47,6 @@ export class LayerGroupComponent implements OnInit {
     };
 
     L.control.layers(baseLayers, overlays).addTo(this.map);
+    
   }
 }

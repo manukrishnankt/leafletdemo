@@ -10,6 +10,13 @@ import { FormsModule } from '@angular/forms';
 import { LayerGroupComponent } from './layer-group/layer-group.component';
 import { EsriPluginComponent } from './esri-plugin/esri-plugin.component';
 import { ProviderComponent } from './provider/provider.component';
+import { GmapTestComponent } from './gmap-test/gmap-test.component';
+import { AgmCoreModule } from '@agm/core';
+import { GmapComponent } from './gmap/gmap.component';
+import { CommonModule } from '@angular/common';
+import {GoogleMapsModule} from '@angular/google-maps';
+import { GmapCustComponent } from './gmap-cust/gmap-cust.component';
+import { MapserverComponent } from './mapserver/mapserver.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +25,21 @@ import { ProviderComponent } from './provider/provider.component';
     CustIconComponent,
     LayerGroupComponent,
     EsriPluginComponent,
-    ProviderComponent
+    ProviderComponent,
+    GmapTestComponent,
+    GmapComponent,
+    GmapCustComponent,
+    MapserverComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LeafletModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD1qE9n9bkmcPRGmsuG9zmCAcN8qDsQrDQ'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
