@@ -24,6 +24,7 @@ export class MapserverComponent implements OnInit {
     }).setView(this.initLoaded, this.curZoomVal);
 
     //const esriLayer = esri.basemapLayer('Imagery');
+    
     const esriLayer = esri.basemapLayer('Topographic');
     this.map.addLayer(esriLayer);
   }
@@ -51,7 +52,12 @@ export class MapserverComponent implements OnInit {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
     this.newAddressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-    const heat1 = L.heatLayer(this.newAddressPoints,{});
+    var heat1 = null;
+    try{
+      heat1 =L.heatLayer(this.newAddressPoints,{})
+    }catch{
+
+    }
     var baseLayers = {
       "cyclOSM": cyclOSM,
       "Esri_WorldImagery":Esri_WorldImagery,
