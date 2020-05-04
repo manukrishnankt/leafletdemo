@@ -17,6 +17,10 @@ import { CommonModule } from '@angular/common';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { GmapCustComponent } from './gmap-cust/gmap-cust.component';
 import { MapserverComponent } from './mapserver/mapserver.component';
+import { GibsComponent } from './gibs/gibs.component';
+import { ZoomearthComponent } from './zoomearth/zoomearth.component';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,12 +34,16 @@ import { MapserverComponent } from './mapserver/mapserver.component';
     GmapComponent,
     GmapCustComponent,
     MapserverComponent,
+    GibsComponent,
+    ZoomearthComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LeafletModule,
     FormsModule,
+    HttpClientModule,
+    HttpModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD1qE9n9bkmcPRGmsuG9zmCAcN8qDsQrDQ'

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import * as esri from 'esri-leaflet';
 import 'leaflet.heat/dist/leaflet-heat.js';
-import { addressPoints} from '../../assets/realworld.10000'
+import { addressPoints} from '../../assets/realworld.10000';
+import 'leaflet.heat';
+
+
+
 @Component({
   selector: 'app-mapserver',
   templateUrl: './mapserver.component.html',
@@ -15,6 +19,7 @@ export class MapserverComponent implements OnInit {
   curMinZoomVal : number = 0;
   initLoaded : L.LatLngExpression = [-37.8839,175.3745188667];
   newAddressPoints: any;
+  h1: any;
   constructor() { }
   ngOnInit(): void {
     this.map = L.map('map', {
@@ -51,18 +56,23 @@ export class MapserverComponent implements OnInit {
     Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     });
-    this.newAddressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-    var heat1 = null;
-    try{
-      heat1 =L.heatLayer(this.newAddressPoints,{})
-    }catch{
 
-    }
+
+    var Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    }), JusticeMap_plurality = L.tileLayer('http://www.justicemap.org/tile/{size}/plural/{z}/{x}/{y}.png', {
+      attribution: '<a href="http://www.justicemap.org/terms.php">Justice Map</a>',
+      bounds: [[14, -180], [72, -56]]
+    });
+    
+
+    this.newAddressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
     var baseLayers = {
       "cyclOSM": cyclOSM,
       "Esri_WorldImagery":Esri_WorldImagery,
-      "heat":heat1,
       "steman": steman,
+      "Stadia_AlidadeSmoothDark":Stadia_AlidadeSmoothDark ,
     };
 
     var overlays = {

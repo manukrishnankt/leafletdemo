@@ -9,6 +9,8 @@ import { GmapTestComponent } from './gmap-test/gmap-test.component';
 import { GmapComponent } from './gmap/gmap.component';
 import { GmapCustComponent } from './gmap-cust/gmap-cust.component';
 import { MapserverComponent } from './mapserver/mapserver.component';
+import { GibsComponent } from './gibs/gibs.component';
+import { ZoomearthComponent } from './zoomearth/zoomearth.component';
 
 const routes: Routes = [
   { path : 'component', component : TestComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path : 'gmap1', component : GmapComponent },
   { path : 'gmap2', component : GmapCustComponent },
   { path : 'mapserver', component : MapserverComponent },
+  { path : 'gibs', component : GibsComponent },
+  { path : 'zoom', component : ZoomearthComponent },
 ];
 
 @NgModule({
