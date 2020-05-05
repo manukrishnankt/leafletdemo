@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import * as esri from 'esri-leaflet';
-import 'leaflet.heat/dist/leaflet-heat.js';
 import { addressPoints} from '../../assets/realworld.10000';
 import 'leaflet.heat';
-
+// const L = window['L'];
 
 
 @Component({
@@ -68,10 +67,17 @@ export class MapserverComponent implements OnInit {
     
 
     this.newAddressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
+    var heat1 = null;
+    try{
+      heat1 =L.heatLayer(this.newAddressPoints,{})
+    }catch{
+
+    }
     var baseLayers = {
       "cyclOSM": cyclOSM,
       "Esri_WorldImagery":Esri_WorldImagery,
       "steman": steman,
+      heat1:heat1,
       "Stadia_AlidadeSmoothDark":Stadia_AlidadeSmoothDark ,
     };
 
