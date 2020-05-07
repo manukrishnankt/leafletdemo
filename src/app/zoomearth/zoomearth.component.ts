@@ -20,9 +20,10 @@ export class ZoomearthComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
-    this.appService.checkCredential().subscribe(responseData => {
+    this.responseArr = this.appService.checkCredential();
+    // .subscribe(responseData => {
         var cities = L.layerGroup();
-        this.responseArr = responseData;
+        // this.responseArr = responseData;
         var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
         const markerIcon = L.icon({
             iconSize: [25, 41],
@@ -61,7 +62,7 @@ export class ZoomearthComponent implements OnInit {
         this.map.addLayer(markers);
         L.control.layers(baseLayers, {}).addTo(this.map);
   
-      });
+      // });
   }
   customFunction() {
     //   var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
